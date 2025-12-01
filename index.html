@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chayan Makwana | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--text); margin: 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { background: var(--dark); color: white; padding: 4rem 0; text-align: center; }
+        h1 { margin: 0; font-size: 2.5rem; }
+        .subtitle { color: #94a3b8; font-size: 1.2rem; margin-top: 10px; }
+        .social-links { margin-top: 20px; }
+        .social-links a { color: white; margin: 0 10px; font-size: 1.5rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); }
+
+        /* Sections */
+        section { padding: 3rem 0; border-bottom: 1px solid #e2e8f0; }
+        h2 { color: var(--dark); border-left: 5px solid var(--primary); padding-left: 15px; }
+        
+        /* Grid Layouts */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        
+        /* Cards */
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
+        .card h3 { margin-top: 0; color: var(--primary); }
+        .tag { display: inline-block; background: #eff6ff; color: var(--primary); padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; margin-right: 5px; margin-bottom: 5px; }
+
+        /* Featured Project (AI) */
+        .featured-project { border: 2px solid var(--primary); background: #f0f9ff; }
+        
+        /* Footer */
+        footer { text-align: center; padding: 2rem; background: var(--dark); color: #94a3b8; margin-top: 2rem; }
+        
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .btn:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Chayan Makwana</h1>
+            <p class="subtitle">Software Engineer (Java/Cloud) & AI Practitioner</p>
+            <div class="social-links">
+                <a href="https://github.com/ChayanMakwana" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/chayanmak7" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:chayanmak7@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <p>Results-driven Software Engineer with 7+ years of experience designing scalable, distributed enterprise applications in fintech and SaaS. Specializing in Java (17), Spring Boot, and cloud-native microservices on AWS.</p>
+            <p>Currently expanding expertise into <strong>Generative AI and LLMs</strong> to enhance service automation and intelligence.</p>
+        </section>
+
+        <section>
+            <h2>Featured Projects</h2>
+            <div class="grid">
+                <div class="card featured-project">
+                    <h3><i class="fas fa-robot"></i> ProcureSync AI</h3>
+                    <p><strong>Status:</strong> Kaggle Capstone Project / Hackathon</p>
+                    <p>An AI-driven solution designed to optimize procurement processes. Leverages machine learning to analyze data patterns and improve operational efficiency.</p>
+                    <div>
+                        <span class="tag">Python</span>
+                        <span class="tag">GenAI</span>
+                        <span class="tag">Machine Learning</span>
+                    </div>
+                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn">View on GitHub</a>
+                </div>
+
+                <div class="card">
+                    <h3>Cloud-Native ERP Platform</h3>
+                    <p>Built high-performance microservices for QAD Inc. using Spring Cloud. Implemented Kafka-based messaging for async processing and Redis caching for throughput.</p>
+                    <div>
+                        <span class="tag">Java 17</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">AWS EKS</span>
+                        <span class="tag">Kafka</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>CitiRisk Backend</h3>
+                    <p>Engineered backend services for Citibank's risk platform. Streamlined data pipelines serving high-volume REST endpoints.</p>
+                    <div>
+                        <span class="tag">Java</span>
+                        <span class="tag">Oracle DB</span>
+                        <span class="tag">Microservices</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Languages & Frameworks</h3>
+                    <p>Java 17, Python (Automation/AI), Spring Boot, Spring Cloud, JPA, Hibernate.</p>
+                </div>
+                <div class="card">
+                    <h3>Cloud & DevOps</h3>
+                    <p>AWS (EKS, Lambda, RDS, S3), Terraform, Helm, Docker, Kubernetes, Jenkins, ArgoCD.</p>
+                </div>
+                <div class="card">
+                    <h3>Data & Architecture</h3>
+                    <p>Kafka, Redis, PostgreSQL, MongoDB, Oracle, Microservices, REST APIs.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Work History</h2>
+            <div class="card" style="margin-bottom: 1rem;">
+                <h3>Software Engineer 3 @ QAD Inc.</h3>
+                <p><em>05/2023 - Current</em></p>
+                <ul>
+                    <li>Designed RESTful APIs supporting Angular front-end.</li>
+                    <li>Collaborated with DevOps to deploy containerized services on AWS EKS using Terraform.</li>
+                    <li>Enhanced observability with CloudWatch and OpenTelemetry.</li>
+                </ul>
+            </div>
+            <div class="card" style="margin-bottom: 1rem;">
+                <h3>Software Developer @ Citibank N.A.</h3>
+                <p><em>11/2021 - 05/2023</em></p>
+                <ul>
+                    <li>Deployed services on AWS (EC2, ECS, Lambda).</li>
+                    <li>Wrote unit tests using JUnit/Mockito and enforced quality with SonarQube.</li>
+                </ul>
+            </div>
+             <div class="card">
+                <h3>Java Developer @ TCS</h3>
+                <p><em>01/2018 - 11/2021</em></p>
+                <ul>
+                    <li>Developed scalable financial applications for NSDL Tax Information Network.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section style="text-align: center; border: none;">
+             <p>© 2025 Chayan Makwana. Hosted on GitHub Pages.</p>
+        </section>
+    </div>
+
+</body>
+</html>
