@@ -3,151 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chayan Makwana | Backend & AI Engineer</title>
+    <title>Chayan Makwana | Software Engineer 3</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #3b82f6; /* Bright Blue */
-            --accent-glow: rgba(59, 130, 246, 0.5);
-            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --bg-dark: #0a0a0a;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --accent: #38bdf8; /* Sky blue */
+            --accent-gradient: linear-gradient(90deg, #38bdf8, #818cf8);
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        /* Subtle animated background glow */
+        .glow-bg {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+            animation: float 10s infinite ease-in-out;
+        }
 
-        /* Modern Header */
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 40px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero Section */
         header {
-            padding: 6rem 0 4rem;
-            background: radial-gradient(circle at top right, #1e1b4b 0%, transparent 40%);
+            padding: 8rem 0 5rem;
+            border-bottom: 1px solid var(--border-glass);
         }
-        
+
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            background: var(--gradient);
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
         }
 
-        .subtitle {
+        .role-title {
             font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        /* Social Icons with Hover Glow */
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 1.8rem;
-            margin-right: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .social-links a:hover {
             color: var(--accent);
-            text-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-3px);
+            margin-top: 1rem;
+            font-weight: 500;
         }
 
-        /* Section Styling */
-        section { padding: 4rem 0; }
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 1rem;
+        .summary {
+            max-width: 650px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
         }
 
-        /* Advanced Grid Layout */
+        .social-links { margin-top: 2rem; display: flex; gap: 1.5rem; }
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            transition: color 0.2s;
+        }
+        .social-links a:hover { color: var(--accent); }
+
+        /* Sections */
+        section { padding: 5rem 0; border-bottom: 1px solid var(--border-glass); }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3rem;
+        }
+        
+        h2 { font-size: 2rem; margin: 0; font-weight: 600; }
+        .section-subtitle { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+        /* Experience Cards (Timeline style) */
+        .exp-card {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exp-date {
+            color: var(--text-muted);
+            font-family: monospace;
+            font-size: 0.9rem;
+            padding-top: 0.4rem;
+        }
+
+        .exp-content h3 { margin: 0; font-size: 1.3rem; color: #fff; }
+        .exp-role { color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem; display: block; }
+        .exp-content ul { padding-left: 1.2rem; color: var(--text-muted); }
+        .exp-content li { margin-bottom: 0.5rem; }
+
+        /* Project Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        /* Glass/Modern Card Style */
+        /* Glassmorphism Cards */
         .card {
-            background: var(--card-bg);
-            border: 1px solid #334155;
+            background: var(--card-glass);
+            border: 1px solid var(--border-glass);
             padding: 2rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            border-radius: 16px;
+            transition: transform 0.2s, border-color 0.2s;
+            backdrop-filter: blur(10px);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            border-color: var(--accent);
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
         }
 
-        /* Project specific tags */
-        .card h3 { color: var(--accent); margin-top: 0; font-size: 1.4rem; }
-        .card p { flex-grow: 1; } /* Pushes button to bottom */
-        
-        .tag-container { margin-top: 1rem; margin-bottom: 1.5rem; }
+        .card h3 { color: #fff; margin-top: 0; font-size: 1.2rem; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
         .tag {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-            padding: 4px 12px;
+            font-size: 0.75rem;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            border: 1px solid var(--border-glass);
         }
 
-        /* Button Styling */
-        .btn {
-            display: inline-block;
-            text-align: center;
-            padding: 0.75rem 1.5rem;
-            background: var(--gradient);
-            color: white;
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            color: var(--accent);
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
-        .btn:hover { opacity: 0.9; }
+        .btn-link:hover { text-decoration: underline; }
 
-        /* Footer */
-        footer {
+        /* Skills (Bento Style) */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        .skill-item {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glass);
+            padding: 1rem;
+            border-radius: 8px;
             text-align: center;
-            padding: 3rem;
-            color: var(--text-secondary);
-            border-top: 1px solid #334155;
-            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .skill-item strong { display: block; color: #fff; margin-bottom: 0.3rem; font-size: 1rem; }
+
+        footer { text-align: center; padding: 4rem 0; color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .exp-card { grid-template-columns: 1fr; gap: 0.5rem; }
+            h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
+    <div class="glow-bg"></div>
+
     <header>
         <div class="container">
             <h1>Chayan Makwana</h1>
-            <div class="subtitle">Software Engineer & AI Practitioner</div>
-            <p style="max-width: 600px; color: var(--text-secondary);">
-                7+ years of experience in distributed systems, now architecting 
-                <strong>Agentic AI</strong> solutions and cloud-native microservices.
+            <div class="role-title">Senior Software Engineer</div>
+            <p class="summary">
+                [span_0](start_span)Backend specialist with <strong>7+ years of experience</strong> architecting distributed systems[span_0](end_span). 
+                Expert in Java (Spring Boot), Cloud-Native Microservices, and Database Optimization. 
+                Currently exploring Agentic AI to enhance enterprise automation.
             </p>
-            <div class="social-links" style="margin-top: 2rem;">
+            <div class="social-links">
                 <a href="https://github.com/ChayanMakwana" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/chayanmak7" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:chayanmak7@gmail.com"><i class="fas fa-envelope"></i></a>
@@ -158,87 +212,109 @@
     <div class="container">
         
         <section>
-            <h2>AI & Engineering Projects</h2>
+            <div class="section-header">
+                <h2>Work History</h2>
+                <span class="section-subtitle">Professional Experience</span>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">05/2023 — Present</div>
+                <div class="exp-content">
+                    <h3>QAD Inc.</h3>
+                    <span class="exp-role">Software Engineer 3</span>
+                    <ul>
+                        [span_1](start_span)<li>Architected high-performance microservices using <strong>Java 17 and Spring Boot</strong> for cloud-native ERP platforms[span_1](end_span).</li>
+                        [span_2](start_span)<li>Managed efficient database interactions across <strong>Oracle and PostgreSQL</strong> environments to ensure data integrity[span_2](end_span).</li>
+                        [span_3](start_span)<li>Collaborated with DevOps to deploy containerized services on AWS EKS using Terraform, Helm, and ArgoCD[span_3](end_span).</li>
+                        [span_4](start_span)<li>Enhanced system observability with CloudWatch and OpenTelemetry for root cause analysis[span_4](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">11/2021 — 05/2023</div>
+                <div class="exp-content">
+                    <h3>Citibank N.A.</h3>
+                    <span class="exp-role">Software Developer</span>
+                    <ul>
+                        [span_5](start_span)<li>Engineered backend services for the CitiRisk platform using Java and Spring Boot[span_5](end_span).</li>
+                        [span_6](start_span)<li>Streamlined data processing pipelines with <strong>Kafka and Redis</strong> to serve high-volume REST endpoints[span_6](end_span).</li>
+                        [span_7](start_span)<li>Focused on Oracle DB performance tuning and secure transaction workflows[span_7](end_span).</li>
+                        <li>Implemented strict authentication protocols (OAuth/JWT) ensuring banking compliance.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-date">01/2018 — 11/2021</div>
+                <div class="exp-content">
+                    <h3>Tata Consultancy Services</h3>
+                    <span class="exp-role">Java Developer</span>
+                    <ul>
+                        [span_8](start_span)<li>Developed scalable financial applications for the NSDL Tax Information Network[span_8](end_span).</li>
+                        [span_9](start_span)<li>Delivered SOAP/REST APIs and implemented complex SQL logic for large-scale transaction workflows[span_9](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Technical Stack</h2>
+                <span class="section-subtitle">Core Competencies</span>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item"><strong>Java 17</strong>Core & Concurrency</div>
+                <div class="skill-item"><strong>Spring Boot</strong>Microservices</div>
+                <div class="skill-item"><strong>Oracle & SQL</strong>Database Tuning</div>
+                <div class="skill-item"><strong>AWS</strong>EKS, Lambda, RDS</div>
+                <div class="skill-item"><strong>Kafka</strong>Event Streaming</div>
+                <div class="skill-item"><strong>Docker/K8s</strong>Containerization</div>
+                <div class="skill-item"><strong>Python</strong>Automation & AI</div>
+                <div class="skill-item"><strong>Redis</strong>Caching Strategy</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <span class="section-subtitle">Innovation & R&D</span>
+            </div>
             <div class="grid">
                 
                 <div class="card">
-                    <h3><i class="fas fa-headset"></i> Agentic AI Support</h3>
-                    <p>An autonomous AI agent system designed for customer support. Built with Spring Boot to handle complex queries and automated reasoning workflows.</p>
-                    <div class="tag-container">
-                        <span class="tag">Java 17</span>
+                    <h3><i class="fas fa-robot"></i> Agentic AI Support</h3>
+                    <p>An autonomous agent system for customer support. Built with Spring Boot to handle complex queries and automated reasoning workflows.</p>
+                    <div class="tags">
                         <span class="tag">Spring AI</span>
-                        <span class="tag">AI Agents</span>
+                        <span class="tag">Java 17</span>
+                        <span class="tag">LLM Agents</span>
                     </div>
-                    <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="btn" target="_blank">View Code</a>
+                    <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="btn-link" target="_blank">View Code <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                 </div>
 
                 <div class="card">
                     <h3><i class="fas fa-terminal"></i> OpenAI Prompt Service</h3>
-                    <p>A modular Spring Boot service for managing and executing OpenAI prompts. Acts as a centralized gateway for LLM interactions within a microservices architecture.</p>
-                    <div class="tag-container">
+                    <p>A modular Spring Boot service for managing OpenAI prompts. Acts as a centralized infrastructure gateway for LLM interactions.</p>
+                    <div class="tags">
+                        <span class="tag">Microservices</span>
                         <span class="tag">Spring Boot</span>
                         <span class="tag">OpenAI API</span>
-                        <span class="tag">Infrastructure</span>
                     </div>
-                    <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="btn" target="_blank">View Code</a>
+                    <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="btn-link" target="_blank">View Code <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                 </div>
 
                 <div class="card">
-                    <h3><i class="fas fa-chart-line"></i> ProcureSync AI</h3>
-                    <p><strong>Kaggle Capstone:</strong> Optimized procurement processes using Machine Learning to analyze operational data patterns and predict trends.</p>
-                    <div class="tag-container">
+                    <h3><i class="fas fa-chart-pie"></i> ProcureSync AI</h3>
+                    <p>Kaggle Capstone: Optimized procurement processes using Machine Learning to analyze operational data patterns.</p>
+                    <div class="tags">
                         <span class="tag">Python</span>
-                        <span class="tag">GenAI</span>
                         <span class="tag">Data Analysis</span>
+                        <span class="tag">GenAI</span>
                     </div>
-                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn" target="_blank">View Code</a>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Professional Experience</h2>
-            <div class="grid">
-                
-                <div class="card">
-                    <h3>Software Engineer 3 @ QAD Inc.</h3>
-                    <p class="tag" style="background: transparent; padding-left: 0; color: var(--text-secondary); border: none;">05/2023 - Current</p>
-                    <ul>
-                        <li>Architected high-performance microservices using <strong>Java 17 and Spring Boot</strong> for cloud-native ERP platforms.</li>
-                        <li>Optimized complex database interactions and PL/SQL queries on <strong>Oracle DB</strong> to ensure transaction integrity.</li>
-                        <li>Deployed containerized services on AWS EKS using Terraform and Helm.</li>
-                    </ul>
+                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn-link" target="_blank">View Code <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                 </div>
 
-                <div class="card">
-                    <h3>Software Developer @ Citibank</h3>
-                    <p class="tag" style="background: transparent; padding-left: 0; color: var(--text-secondary); border: none;">11/2021 - 05/2023</p>
-                    <ul>
-                        <li>Engineered backend services for CitiRisk platform with a heavy focus on <strong>Oracle DB</strong> performance tuning.</li>
-                        <li>Streamlined data pipelines with <strong>Kafka and Redis</strong> for high-volume endpoints.</li>
-                        <li>Implemented strict security protocols (OAuth/JWT) for banking compliance.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Technical Stack</h2>
-            <div class="card">
-                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <div>
-                        <h4 style="color: var(--accent);">Core & AI</h4>
-                        <p>Java 17, Python, Spring AI, LangChain, Prompt Engineering</p>
-                    </div>
-                    <div>
-                        <h4 style="color: var(--accent);">Backend</h4>
-                        <p>Spring Boot 3, Microservices, Hibernate, REST APIs</p>
-                    </div>
-                    <div>
-                        <h4 style="color: var(--accent);">Cloud & Data</h4>
-                        <p>AWS (EKS, Lambda), Oracle DB, Redis, Kafka, Docker</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -246,5 +322,6 @@
             <p>© 2025 Chayan Makwana. Hosted on GitHub Pages.</p>
         </footer>
     </div>
+
 </body>
 </html>
