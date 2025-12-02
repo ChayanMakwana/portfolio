@@ -224,40 +224,42 @@
         /* Certifications Grid */
         .cert-grid {
             display: grid;
-            /* Use auto-fit with 150px min-width to perfectly frame the embeds */
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 1.5rem;
-            justify-items: center; /* Centers the badges horizontally */
-            align-items: start; /* Aligns them to top */
+            justify-items: center; 
+            align-items: start; 
         }
         
-        /* Wrapper for the embedded badges */
         .cert-embed-wrapper {
-            /* Credly embeds have a fixed width of 150px, this keeps them neat */
             width: 150px; 
         }
 
-        /* Style for the 'Other' Manual Card to look nice next to embeds */
-        .cert-card-manual {
+        /* Style for the 'Manual' Training Card */
+        .training-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 1.5rem 1rem;
+            padding: 1.5rem;
             text-align: center;
             transition: all 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 150px; /* Match width of Credly embeds */
-            min-height: 270px; /* Match height of Credly embeds */
-            box-sizing: border-box;
+            height: 100%;
+            min-height: 180px;
         }
-        .cert-card-manual:hover { border-color: var(--primary); background: rgba(56, 189, 248, 0.05); }
-        .cert-icon-manual { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-muted); }
-        .cert-name-manual { font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.3; }
-        .cert-issuer-manual { font-size: 0.75rem; color: var(--text-muted); }
+        .training-card:hover { border-color: var(--primary); background: rgba(56, 189, 248, 0.05); }
+        .training-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-muted); }
+        .training-name { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.3; }
+        .training-issuer { font-size: 0.75rem; color: var(--text-muted); }
 
+        /* Training Grid uses slightly wider cards than certs */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
 
         /* Skills Layout */
         .skill-category { margin-bottom: 2rem; }
@@ -398,12 +400,22 @@
                     <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="1e437ddf-d04a-4477-ae50-ae628db8ca97" data-share-badge-host="https://www.credly.com"></div>
                 </div>
 
-                <div class="cert-card-manual">
-                    <i class="fas fa-infinity cert-icon-manual" style="color: #38bdf8;"></i>
-                    <div class="cert-name-manual">DevOps Engineering</div>
-                    <div class="cert-issuer-manual">AWS Digital Classroom</div>
-                </div>
+            </div>
+        </section>
 
+        <section>
+            <h2>Professional Training</h2>
+            <div class="training-grid">
+                <div class="training-card">
+                    <i class="fas fa-infinity training-icon" style="color: #38bdf8;"></i>
+                    <div class="training-name">DevOps Engineering on AWS</div>
+                    <div class="training-issuer">Digital Classroom</div>
+                </div>
+                <div class="training-card">
+                    <i class="fas fa-cubes training-icon" style="color: #38bdf8;"></i>
+                    <div class="training-name">Running Containers on Amazon EKS</div>
+                    <div class="training-issuer">Digital Classroom</div>
+                </div>
             </div>
         </section>
 
