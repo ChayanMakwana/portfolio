@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* SaaS Color Palette */
-            --bg-body: #f8fafc;       /* Very light gray/blue */
-            --bg-card: #ffffff;       /* Pure white */
-            --text-main: #0f172a;     /* Dark slate (almost black) */
-            --text-muted: #64748b;    /* Muted slate */
-            --primary: #2563eb;       /* Trustworthy Blue */
-            --border: #e2e8f0;        /* Subtle border */
+            /* Dark Mode Palette */
+            --bg-body: #0f172a;       /* Deep Slate */
+            --bg-card: #1e293b;       /* Lighter Slate */
+            --text-main: #f1f5f9;     /* Off-white */
+            --text-muted: #94a3b8;    /* Muted Gray */
+            --primary: #38bdf8;       /* Bright Sky Blue */
+            --border: #334155;        /* Dark Border */
+            --hover-bg: #334155;
         }
 
         body {
@@ -27,72 +28,86 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
         /* Header */
         header {
-            background: var(--bg-card);
+            padding: 6rem 0 4rem;
             border-bottom: 1px solid var(--border);
-            padding: 5rem 0 3rem;
-            margin-bottom: 3rem;
+            background: radial-gradient(circle at top right, #1e293b 0%, transparent 40%);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin: 0 0 0.5rem 0;
-            letter-spacing: -0.02em;
-            color: var(--text-main);
+            background: linear-gradient(90deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .headline {
             font-size: 1.25rem;
-            color: var(--text-muted);
+            color: var(--primary);
             margin-bottom: 1.5rem;
-            font-weight: 400;
+            font-weight: 500;
         }
 
+        .summary {
+            max-width: 650px;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links { display: flex; gap: 1.5rem; align-items: center; }
         .social-links a {
             color: var(--text-muted);
             font-size: 1.5rem;
-            margin-right: 1.25rem;
-            transition: color 0.2s;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
-        .social-links a:hover { color: var(--primary); }
+        .social-links a:hover { color: var(--primary); transform: translateY(-2px); }
+        
+        /* Credly Button Style */
+        .credly-btn {
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+        }
+        .credly-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); }
 
         /* Sections */
-        section { margin-bottom: 4rem; }
+        section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
         
         h2 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
         }
 
-        /* SaaS Card Style */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            /* The "Soft Lift" Shadow */
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        /* Experience Cards */
+        .job-card {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .job-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: var(--border);
         }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            border-color: #cbd5e1;
-        }
-
-        /* Typography within cards */
         .job-header {
             display: flex;
             justify-content: space-between;
@@ -101,50 +116,91 @@
             flex-wrap: wrap;
         }
 
-        .job-title { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
-        .company { color: var(--primary); font-weight: 500; }
-        .date { font-size: 0.875rem; color: var(--text-muted); font-family: 'Inter', sans-serif; }
+        .job-title { font-weight: 600; font-size: 1.2rem; color: var(--text-main); }
+        .company { color: var(--primary); }
+        .date { font-size: 0.9rem; color: var(--text-muted); font-family: monospace; }
 
         ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
-        li { margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.95rem; }
-        strong { color: var(--text-main); font-weight: 600; }
+        li { margin-bottom: 0.5rem; color: var(--text-muted); font-size: 1rem; }
+        strong { color: #e2e8f0; font-weight: 600; }
 
-        /* Project specific */
-        .project-title { color: var(--primary); margin-top: 0; font-size: 1.1rem; }
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 1rem;
+        /* Project Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .project-title { color: var(--primary); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        .project-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+
+        .btn-link {
+            display: inline-block;
             text-decoration: none;
             color: var(--text-main);
-            font-size: 0.875rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 6px;
-            background: #f1f5f9;
-            transition: all 0.2s;
-        }
-        .project-link:hover { background: #e2e8f0; }
-
-        /* Skills Grid */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-        .skill-tag {
-            background: white;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 6px 12px;
-            border-radius: 6px;
             font-size: 0.85rem;
             font-weight: 500;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+            transition: all 0.2s;
         }
-        
-        footer {
+        .btn-link:hover { background: var(--primary); border-color: var(--primary); color: #0f172a; }
+
+        /* Certifications Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
             text-align: center;
-            color: var(--text-muted);
-            padding: 3rem 0;
-            font-size: 0.875rem;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
+        .cert-card:hover { border-color: var(--primary); background: rgba(56, 189, 248, 0.05); }
+        
+        .cert-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-muted); }
+        .cert-name { font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; }
+        .cert-issuer { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Skills Layout */
+        .skill-category { margin-bottom: 2rem; }
+        .skill-category h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 1rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .skill-tag:hover { color: #fff; border-color: var(--text-muted); }
+
+        footer { text-align: center; color: var(--text-muted); padding: 4rem 0; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -153,15 +209,18 @@
         <div class="container">
             <h1>Chayan Makwana</h1>
             <div class="headline">Senior Software Engineer | Full Stack & AI Practitioner</div>
-            <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 1.5rem;">
-                7+ years of experience building distributed enterprise systems. 
-                Expert in <strong>Java/Spring Boot</strong> microservices and modernizing legacy applications 
-                with <strong>Angular</strong> frontends and <strong>Agentic AI</strong> solutions.
+            <p class="summary">
+                Backend specialist with <strong>7+ years of experience</strong> architecting distributed systems. 
+                Expert in Java, PostgreSQL, and Cloud-Native Microservices. 
+                Currently exploring Agentic AI to enhance enterprise automation.
             </p>
             <div class="social-links">
                 <a href="https://github.com/ChayanMakwana" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/chayanmak7" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="mailto:chayanmak7@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.credly.com/users/chayan-makwana/badges#credly" target="_blank" class="credly-btn">
+                    <i class="fas fa-certificate" style="margin-right:8px; color:#fbbf24;"></i> View Credly Profile
+                </a>
             </div>
         </div>
     </header>
@@ -171,28 +230,28 @@
         <section>
             <h2>Professional Experience</h2>
 
-            <div class="card">
+            <div class="job-card">
                 <div class="job-header">
                     <div>
                         <span class="job-title">Software Engineer 3</span>
-                        <span style="margin: 0 8px; color: #cbd5e1;">|</span>
+                        <span style="margin: 0 8px; color: var(--border);">|</span>
                         <span class="company">QAD Inc.</span>
                     </div>
                     <span class="date">05/2023 – Present</span>
                 </div>
                 <ul>
                     <li>Spearheaded full-stack feature development for cloud-native ERP platforms, integrating <strong>Angular 15</strong> frontend modules with high-performance <strong>Java 17</strong> microservices.</li>
+                    <li>Managed efficient database interactions across <strong>PostgreSQL and Oracle</strong> environments, optimizing queries for transaction integrity.</li>
+                    <li>Collaborated with DevOps to deploy containerized services on AWS EKS using <strong>Terraform and Helm</strong>.</li>
                     <li>Refactored legacy UI components into modern Angular architecture, ensuring seamless data binding with backend REST endpoints.</li>
-                    <li>Managed efficient database interactions across <strong>Oracle and PostgreSQL</strong> environments, optimizing PL/SQL queries for transaction integrity.</li>
-                    <li>Collaborated with DevOps to deploy containerized services on AWS EKS using Terraform and Helm.</li>
                 </ul>
             </div>
 
-            <div class="card">
+            <div class="job-card">
                 <div class="job-header">
                     <div>
                         <span class="job-title">Software Developer</span>
-                        <span style="margin: 0 8px; color: #cbd5e1;">|</span>
+                        <span style="margin: 0 8px; color: var(--border);">|</span>
                         <span class="company">Citibank N.A.</span>
                     </div>
                     <span class="date">11/2021 – 05/2023</span>
@@ -204,11 +263,11 @@
                 </ul>
             </div>
 
-            <div class="card">
+            <div class="job-card">
                 <div class="job-header">
                     <div>
                         <span class="job-title">Java Developer</span>
-                        <span style="margin: 0 8px; color: #cbd5e1;">|</span>
+                        <span style="margin: 0 8px; color: var(--border);">|</span>
                         <span class="company">Tata Consultancy Services</span>
                     </div>
                     <span class="date">01/2018 – 11/2021</span>
@@ -221,53 +280,122 @@
         </section>
 
         <section>
-            <h2>Featured Projects</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                
-                <div class="card">
-                    <h3 class="project-title"><i class="fas fa-robot" style="margin-right: 8px;"></i> Agentic AI Support</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">
-                        An autonomous agent system for customer support. Built with Spring Boot and Spring AI to handle complex queries via automated reasoning workflows.
-                    </p>
-                    <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="project-link" target="_blank">View Code</a>
+            <h2>Certifications & Badges</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <i class="fab fa-aws cert-icon" style="color: #FF9900;"></i>
+                    <div class="cert-name">AWS Certified Developer</div>
+                    <div class="cert-issuer">Associate</div>
                 </div>
-
-                <div class="card">
-                    <h3 class="project-title"><i class="fas fa-terminal" style="margin-right: 8px;"></i> OpenAI Prompt Service</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">
-                        A modular Spring Boot infrastructure service for managing OpenAI prompts. Acts as a centralized gateway for LLM interactions in a microservices architecture.
-                    </p>
-                    <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="project-link" target="_blank">View Code</a>
+                <div class="cert-card">
+                    <i class="fab fa-aws cert-icon" style="color: #FF9900;"></i>
+                    <div class="cert-name">AWS Cloud Practitioner</div>
+                    <div class="cert-issuer">Foundational</div>
                 </div>
-
-                <div class="card">
-                    <h3 class="project-title"><i class="fas fa-chart-pie" style="margin-right: 8px;"></i> ProcureSync AI</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">
-                        <strong>Kaggle Capstone:</strong> Optimized procurement processes using Machine Learning to analyze operational data patterns.
-                    </p>
-                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="project-link" target="_blank">View Code</a>
+                <div class="cert-card">
+                    <i class="fab fa-java cert-icon" style="color: #f89820;"></i>
+                    <div class="cert-name">Oracle Certified Pro</div>
+                    <div class="cert-issuer">Java SE 6 Programmer</div>
                 </div>
-
+                <div class="cert-card">
+                    <i class="fas fa-infinity cert-icon" style="color: #38bdf8;"></i>
+                    <div class="cert-name">DevOps Engineering</div>
+                    <div class="cert-issuer">AWS Digital Classroom</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-brain cert-icon" style="color: #a855f7;"></i>
+                    <div class="cert-name">Generative AI</div>
+                    <div class="cert-issuer">AWS Educate</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="https://www.credly.com/users/chayan-makwana/badges#credly" target="_blank" class="btn-link">
+                    Verify all badges on Credly <i class="fas fa-external-link-alt" style="margin-left:5px;"></i>
+                </a>
             </div>
         </section>
 
         <section>
+            <h2>Featured Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 class="project-title"><i class="fas fa-robot"></i> Agentic AI Support</h3>
+                    <p class="project-desc">
+                        An autonomous agent system for customer support. Built with Spring Boot and Spring AI to handle complex queries via automated reasoning workflows.
+                    </p>
+                    <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="btn-link" target="_blank">View Code</a>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title"><i class="fas fa-terminal"></i> OpenAI Prompt Service</h3>
+                    <p class="project-desc">
+                        A modular Spring Boot infrastructure service for managing OpenAI prompts. Acts as a centralized gateway for LLM interactions in a microservices architecture.
+                    </p>
+                    <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="btn-link" target="_blank">View Code</a>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title"><i class="fas fa-chart-pie"></i> ProcureSync AI</h3>
+                    <p class="project-desc">
+                        <strong>Kaggle Capstone:</strong> Optimized procurement processes using Machine Learning to analyze operational data patterns.
+                    </p>
+                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn-link" target="_blank">View Code</a>
+                </div>
+            </div>
+        </section>
+
+        <section style="border-bottom: none;">
             <h2>Technical Stack</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Java 17</span>
-                <span class="skill-tag">Spring Boot 3</span>
-                <span class="skill-tag">Angular 15</span>
-                <span class="skill-tag">Oracle DB / PL/SQL</span>
-                <span class="skill-tag">Microservices</span>
-                <span class="skill-tag">AWS (EKS, RDS)</span>
-                <span class="skill-tag">Kafka</span>
-                <span class="skill-tag">Spring AI</span>
-                <span class="skill-tag">Python</span>
+            
+            <div class="skill-category">
+                <h3>Backend & Full Stack</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Java 17</span>
+                    <span class="skill-tag">Spring Boot 3</span>
+                    <span class="skill-tag">Angular 15</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">Python</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Data & Storage</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Oracle DB / PL/SQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Kafka</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>DevOps & Cloud</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS (EKS, RDS, Lambda)</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Helm</span>
+                    <span class="skill-tag">ArgoCD</span>
+                    <span class="skill-tag">Docker & K8s</span>
+                    <span class="skill-tag">Jenkins</span>
+                    <span class="skill-tag">SonarQube</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>AI & Emerging Tech</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Spring AI</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">GenAI Agents</span>
+                    <span class="skill-tag">Vector DBs</span>
+                </div>
             </div>
         </section>
 
         <footer>
-            © 2025 Chayan Makwana. Hosted on GitHub Pages.
+            <p>© 2025 Chayan Makwana. Hosted on GitHub Pages.</p>
         </footer>
     </div>
 
