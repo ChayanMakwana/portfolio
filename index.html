@@ -3,46 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chayan Makwana | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Chayan Makwana | Senior Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
+            /* SaaS Color Palette */
+            --bg-body: #f8fafc;       /* Very light gray/blue */
+            --bg-card: #ffffff;       /* Pure white */
+            --text-main: #0f172a;     /* Dark slate (almost black) */
+            --text-muted: #64748b;    /* Muted slate */
+            --primary: #2563eb;       /* Trustworthy Blue */
+            --border: #e2e8f0;        /* Subtle border */
         }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--text); margin: 0; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
         /* Header */
-        header { background: var(--dark); color: white; padding: 4rem 0; text-align: center; }
-        h1 { margin: 0; font-size: 2.5rem; }
-        .subtitle { color: #94a3b8; font-size: 1.2rem; margin-top: 10px; }
-        .social-links { margin-top: 20px; }
-        .social-links a { color: white; margin: 0 10px; font-size: 1.5rem; transition: 0.3s; }
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 5rem 0 3rem;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+
+        .headline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin-right: 1.25rem;
+            transition: color 0.2s;
+        }
         .social-links a:hover { color: var(--primary); }
 
         /* Sections */
-        section { padding: 3rem 0; border-bottom: 1px solid #e2e8f0; }
-        h2 { color: var(--dark); border-left: 5px solid var(--primary); padding-left: 15px; }
+        section { margin-bottom: 4rem; }
         
-        /* Grid Layouts */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        
-        /* Cards */
-        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; }
-        .card h3 { margin-top: 0; color: var(--primary); }
-        .tag { display: inline-block; background: #eff6ff; color: var(--primary); padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; margin-right: 5px; margin-bottom: 5px; }
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
 
-        /* Featured Project (AI) */
-        .featured-project { border: 2px solid var(--primary); background: #f0f9ff; }
+        /* SaaS Card Style */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            /* The "Soft Lift" Shadow */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-color: #cbd5e1;
+        }
+
+        /* Typography within cards */
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
+        .company { color: var(--primary); font-weight: 500; }
+        .date { font-size: 0.875rem; color: var(--text-muted); font-family: 'Inter', sans-serif; }
+
+        ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+        li { margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.95rem; }
+        strong { color: var(--text-main); font-weight: 600; }
+
+        /* Project specific */
+        .project-title { color: var(--primary); margin-top: 0; font-size: 1.1rem; }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: #f1f5f9;
+            transition: all 0.2s;
+        }
+        .project-link:hover { background: #e2e8f0; }
+
+        /* Skills Grid */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .skill-tag {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
         
-        /* Footer */
-        footer { text-align: center; padding: 2rem; background: var(--dark); color: #94a3b8; margin-top: 2rem; }
-        
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        .btn:hover { background: #1d4ed8; }
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 3rem 0;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -50,7 +152,12 @@
     <header>
         <div class="container">
             <h1>Chayan Makwana</h1>
-            <p class="subtitle">Software Engineer (Java/Cloud) & AI Practitioner</p>
+            <div class="headline">Senior Software Engineer | Full Stack & AI Practitioner</div>
+            <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 1.5rem;">
+                7+ years of experience building distributed enterprise systems. 
+                Expert in <strong>Java/Spring Boot</strong> microservices and modernizing legacy applications 
+                with <strong>Angular</strong> frontends and <strong>Agentic AI</strong> solutions.
+            </p>
             <div class="social-links">
                 <a href="https://github.com/ChayanMakwana" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://linkedin.com/in/chayanmak7" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -60,99 +167,108 @@
     </header>
 
     <div class="container">
+
         <section>
-            <h2>About Me</h2>
-            <p>Results-driven Software Engineer with 7+ years of experience designing scalable, distributed enterprise applications in fintech and SaaS. Specializing in Java (17), Spring Boot, and cloud-native microservices on AWS.</p>
-            <p>Currently expanding expertise into <strong>Generative AI and LLMs</strong> to enhance service automation and intelligence.</p>
+            <h2>Professional Experience</h2>
+
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Software Engineer 3</span>
+                        <span style="margin: 0 8px; color: #cbd5e1;">|</span>
+                        <span class="company">QAD Inc.</span>
+                    </div>
+                    <span class="date">05/2023 – Present</span>
+                </div>
+                <ul>
+                    <li>Spearheaded full-stack feature development for cloud-native ERP platforms, integrating <strong>Angular 15</strong> frontend modules with high-performance <strong>Java 17</strong> microservices.</li>
+                    <li>Refactored legacy UI components into modern Angular architecture, ensuring seamless data binding with backend REST endpoints.</li>
+                    <li>Managed efficient database interactions across <strong>Oracle and PostgreSQL</strong> environments, optimizing PL/SQL queries for transaction integrity.</li>
+                    <li>Collaborated with DevOps to deploy containerized services on AWS EKS using Terraform and Helm.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Software Developer</span>
+                        <span style="margin: 0 8px; color: #cbd5e1;">|</span>
+                        <span class="company">Citibank N.A.</span>
+                    </div>
+                    <span class="date">11/2021 – 05/2023</span>
+                </div>
+                <ul>
+                    <li>Engineered end-to-end solutions for the CitiRisk platform, developing secure REST APIs and integrating them with <strong>Angular</strong> dashboards for real-time risk visualization.</li>
+                    <li>Streamlined data processing pipelines with <strong>Kafka and Redis</strong> to serve high-volume endpoints.</li>
+                    <li>Focused heavily on <strong>Oracle DB</strong> performance tuning and secure transaction workflows complying with banking standards.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Java Developer</span>
+                        <span style="margin: 0 8px; color: #cbd5e1;">|</span>
+                        <span class="company">Tata Consultancy Services</span>
+                    </div>
+                    <span class="date">01/2018 – 11/2021</span>
+                </div>
+                <ul>
+                    <li>Developed scalable financial applications for the NSDL Tax Information Network using Java and Spring.</li>
+                    <li>Delivered SOAP/REST APIs and implemented complex SQL logic for large-scale transaction workflows.</li>
+                </ul>
+            </div>
         </section>
 
         <section>
             <h2>Featured Projects</h2>
-            <div class="grid">
-                <div class="card featured-project">
-                    <h3><i class="fas fa-robot"></i> ProcureSync AI</h3>
-                    <p><strong>Status:</strong> Kaggle Capstone Project / Hackathon</p>
-                    <p>An AI-driven solution designed to optimize procurement processes. Leverages machine learning to analyze data patterns and improve operational efficiency.</p>
-                    <div>
-                        <span class="tag">Python</span>
-                        <span class="tag">GenAI</span>
-                        <span class="tag">Machine Learning</span>
-                    </div>
-                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn">View on GitHub</a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                
+                <div class="card">
+                    <h3 class="project-title"><i class="fas fa-robot" style="margin-right: 8px;"></i> Agentic AI Support</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        An autonomous agent system for customer support. Built with Spring Boot and Spring AI to handle complex queries via automated reasoning workflows.
+                    </p>
+                    <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="project-link" target="_blank">View Code</a>
                 </div>
 
                 <div class="card">
-                    <h3>Cloud-Native ERP Platform</h3>
-                    <p>Built high-performance microservices for QAD Inc. using Spring Cloud. Implemented Kafka-based messaging for async processing and Redis caching for throughput.</p>
-                    <div>
-                        <span class="tag">Java 17</span>
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">AWS EKS</span>
-                        <span class="tag">Kafka</span>
-                    </div>
+                    <h3 class="project-title"><i class="fas fa-terminal" style="margin-right: 8px;"></i> OpenAI Prompt Service</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        A modular Spring Boot infrastructure service for managing OpenAI prompts. Acts as a centralized gateway for LLM interactions in a microservices architecture.
+                    </p>
+                    <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="project-link" target="_blank">View Code</a>
                 </div>
 
                 <div class="card">
-                    <h3>CitiRisk Backend</h3>
-                    <p>Engineered backend services for Citibank's risk platform. Streamlined data pipelines serving high-volume REST endpoints.</p>
-                    <div>
-                        <span class="tag">Java</span>
-                        <span class="tag">Oracle DB</span>
-                        <span class="tag">Microservices</span>
-                    </div>
+                    <h3 class="project-title"><i class="fas fa-chart-pie" style="margin-right: 8px;"></i> ProcureSync AI</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">
+                        <strong>Kaggle Capstone:</strong> Optimized procurement processes using Machine Learning to analyze operational data patterns.
+                    </p>
+                    <a href="https://github.com/ChayanMakwana/procuresync-ai" class="project-link" target="_blank">View Code</a>
                 </div>
+
             </div>
         </section>
 
         <section>
-            <h2>Technical Skills</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Languages & Frameworks</h3>
-                    <p>Java 17, Python (Automation/AI), Spring Boot, Spring Cloud, JPA, Hibernate.</p>
-                </div>
-                <div class="card">
-                    <h3>Cloud & DevOps</h3>
-                    <p>AWS (EKS, Lambda, RDS, S3), Terraform, Helm, Docker, Kubernetes, Jenkins, ArgoCD.</p>
-                </div>
-                <div class="card">
-                    <h3>Data & Architecture</h3>
-                    <p>Kafka, Redis, PostgreSQL, MongoDB, Oracle, Microservices, REST APIs.</p>
-                </div>
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Java 17</span>
+                <span class="skill-tag">Spring Boot 3</span>
+                <span class="skill-tag">Angular 15</span>
+                <span class="skill-tag">Oracle DB / PL/SQL</span>
+                <span class="skill-tag">Microservices</span>
+                <span class="skill-tag">AWS (EKS, RDS)</span>
+                <span class="skill-tag">Kafka</span>
+                <span class="skill-tag">Spring AI</span>
+                <span class="skill-tag">Python</span>
             </div>
         </section>
 
-        <section>
-            <h2>Work History</h2>
-            <div class="card" style="margin-bottom: 1rem;">
-                <h3>Software Engineer 3 @ QAD Inc.</h3>
-                <p><em>05/2023 - Current</em></p>
-                <ul>
-                    <li>Designed RESTful APIs supporting Angular front-end.</li>
-                    <li>Collaborated with DevOps to deploy containerized services on AWS EKS using Terraform.</li>
-                    <li>Enhanced observability with CloudWatch and OpenTelemetry.</li>
-                </ul>
-            </div>
-            <div class="card" style="margin-bottom: 1rem;">
-                <h3>Software Developer @ Citibank N.A.</h3>
-                <p><em>11/2021 - 05/2023</em></p>
-                <ul>
-                    <li>Deployed services on AWS (EC2, ECS, Lambda).</li>
-                    <li>Wrote unit tests using JUnit/Mockito and enforced quality with SonarQube.</li>
-                </ul>
-            </div>
-             <div class="card">
-                <h3>Java Developer @ TCS</h3>
-                <p><em>01/2018 - 11/2021</em></p>
-                <ul>
-                    <li>Developed scalable financial applications for NSDL Tax Information Network.</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section style="text-align: center; border: none;">
-             <p>© 2025 Chayan Makwana. Hosted on GitHub Pages.</p>
-        </section>
+        <footer>
+            © 2025 Chayan Makwana. Hosted on GitHub Pages.
+        </footer>
     </div>
 
 </body>
