@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 17 10 11 4 5'%3E%3C/polyline%3E%3Cline x1='12' y1='19' x2='20' y2='19'%3E%3C/line%3E%3C/svg%3E">
+    
     <title>Chayan Makwana | Senior Software Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -191,12 +194,16 @@
             gap: 1.5rem;
         }
 
+        /* Updated Card Styling to force buttons to bottom */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 1.5rem;
             transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensures cards in the same row are same height */
         }
 
         .card:hover {
@@ -207,6 +214,14 @@
         .project-title { color: var(--primary); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
         .project-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
 
+        /* Button Container for alignment */
+        .card-actions {
+            margin-top: auto; /* Pushes buttons to the bottom of the card */
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
         .btn-link {
             display: inline-block;
             text-decoration: none;
@@ -214,12 +229,10 @@
             font-size: 0.85rem;
             font-weight: 500;
             border: 1px solid var(--border);
-            padding: 6px 12px;
+            padding: 8px 16px; /* Slightly adjusted padding for better look */
             border-radius: 6px;
             background: rgba(255,255,255,0.05);
             transition: all 0.2s;
-            margin-top: 1rem;
-            margin-right: 0.5rem; /* Gap between buttons */
         }
         .btn-link:hover { background: var(--primary); border-color: var(--primary); color: #0f172a; }
 
@@ -429,7 +442,7 @@
                     <p class="project-desc">
                         <strong>Kaggle Capstone:</strong> Optimized procurement processes using Machine Learning to analyze operational data patterns.
                     </p>
-                    <div style="display: flex; flex-wrap: wrap;">
+                    <div class="card-actions">
                         <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn-link" target="_blank">View Code</a>
                         <a href="https://www.kaggle.com/competitions/agents-intensive-capstone-project/writeups/procuresync-ai-context-aware-enterprise-orchestra" class="btn-link" target="_blank">Read Writeup</a>
                     </div>
@@ -440,7 +453,9 @@
                     <p class="project-desc">
                         An autonomous agent system for customer support. Built with Spring Boot and Spring AI to handle complex queries via automated reasoning workflows.
                     </p>
-                    <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="btn-link" target="_blank">View Code</a>
+                    <div class="card-actions">
+                        <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="btn-link" target="_blank">View Code</a>
+                    </div>
                 </div>
 
                 <div class="card">
@@ -448,7 +463,9 @@
                     <p class="project-desc">
                         A modular Spring Boot infrastructure service for managing OpenAI prompts. Acts as a centralized gateway for LLM interactions in a microservices architecture.
                     </p>
-                    <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="btn-link" target="_blank">View Code</a>
+                    <div class="card-actions">
+                        <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="btn-link" target="_blank">View Code</a>
+                    </div>
                 </div>
 
             </div>
