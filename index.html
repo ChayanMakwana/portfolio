@@ -30,6 +30,26 @@
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
+            position: relative; /* Required for the background effects */
+            
+            /* --- BACKGROUND PATTERN UPGRADE --- */
+            /* 1. Subtle Dot Grid Pattern */
+            background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+            background-size: 30px 30px; /* Size of the grid cells */
+        }
+
+        /* --- AMBIENT GLOW UPGRADE --- */
+        /* Adds a blue light splash at the top center */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 600px;
+            background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
@@ -37,8 +57,9 @@
         /* Header */
         header {
             padding: 6rem 0 4rem;
+            /* Made transparent to show the new background glow */
             border-bottom: 1px solid var(--border);
-            background: radial-gradient(circle at top right, #1e293b 0%, transparent 40%);
+            background: transparent; 
         }
 
         h1 {
@@ -112,6 +133,7 @@
             transition: opacity 0.3s;
             white-space: nowrap;
             pointer-events: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .social-link-item:hover .tooltip {
@@ -194,29 +216,32 @@
             gap: 1.5rem;
         }
 
-        /* Updated Card Styling to force buttons to bottom */
+        /* Card Styling */
         .card {
-            background: var(--bg-card);
+            background: var(--bg-card); /* Keeps cards solid on top of the pattern */
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 1.5rem;
             transition: transform 0.2s, border-color 0.2s;
             display: flex;
             flex-direction: column;
-            height: 100%; /* Ensures cards in the same row are same height */
+            height: 100%;
+            /* Subtle shadow to lift card off the pattern */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
         .project-title { color: var(--primary); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
         .project-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
 
-        /* Button Container for alignment */
+        /* Button Container */
         .card-actions {
-            margin-top: auto; /* Pushes buttons to the bottom of the card */
+            margin-top: auto; 
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
@@ -229,7 +254,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             border: 1px solid var(--border);
-            padding: 8px 16px; /* Slightly adjusted padding for better look */
+            padding: 8px 16px;
             border-radius: 6px;
             background: rgba(255,255,255,0.05);
             transition: all 0.2s;
@@ -249,7 +274,7 @@
             width: 150px; 
         }
 
-        /* Style for the 'Manual' Training Card */
+        /* Training Card */
         .training-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -263,13 +288,14 @@
             justify-content: center;
             height: 100%;
             min-height: 180px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         .training-card:hover { border-color: var(--primary); background: rgba(56, 189, 248, 0.05); }
         .training-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-muted); }
         .training-name { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.3; }
         .training-issuer { font-size: 0.75rem; color: var(--text-muted); }
 
-        /* Training Grid uses slightly wider cards than certs */
+        /* Training Grid */
         .training-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -287,6 +313,8 @@
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.9rem;
+            /* Added backdrop filter to make tags readable over pattern */
+            backdrop-filter: blur(4px);
         }
         .skill-tag:hover { color: #fff; border-color: var(--text-muted); }
 
