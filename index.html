@@ -1,552 +1,633 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 17 10 11 4 5'%3E%3C/polyline%3E%3Cline x1='12' y1='19' x2='20' y2='19'%3E%3C/line%3E%3C/svg%3E">
-    
-    <title>Chayan Makwana | Senior Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            /* Original Clean Dark Palette */
-            --bg-body: #0f172a;       /* Deep Slate */
-            --bg-card: #1e293b;       /* Lighter Slate */
-            --text-main: #f1f5f9;     /* Off-white */
-            --text-muted: #94a3b8;    /* Muted Gray */
-            --primary: #38bdf8;       /* Bright Sky Blue */
-            --border: #334155;        /* Dark Border */
-            --hover-bg: #334155;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chayan Makwana | Senior Software Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 17 10 11 4 5'%3E%3C/polyline%3E%3Cline x1='12' y1='19' x2='20' y2='19'%3E%3C/line%3E%3C/svg%3E">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
-            
-            /* Subtle Pattern to prevent "dullness" without being overwhelming */
-            background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* Subtle Ambient Glow at top */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 500px;
-            background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  <style>
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 90ms; }
+    .reveal-d2 { transition-delay: 180ms; }
+    .reveal-d3 { transition-delay: 270ms; }
 
-        /* Header */
-        header {
-            padding: 6rem 0 4rem;
-            border-bottom: 1px solid var(--border);
-            background: transparent;
-        }
+    /* ── Gradient name ── */
+    .grad-dark  { background: linear-gradient(130deg,#f1f5f9 30%,#64748b 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .grad-light { background: linear-gradient(130deg,#0f172a 30%,#475569 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem 0;
-            background: linear-gradient(90deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    /* ── Hero ambient glow ── */
+    .glow-hero::after {
+      content:''; pointer-events:none; position:absolute; inset:0;
+      background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(56,189,248,.13) 0%, transparent 70%);
+      z-index:0;
+    }
 
-        .headline {
-            font-size: 1.25rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
+    /* ── Dot grid bg ── */
+    body { background-image: radial-gradient(rgba(56,189,248,.065) 1px, transparent 1px); background-size: 28px 28px; }
 
-        .summary {
-            max-width: 700px;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
+    /* ── Nav underline ── */
+    .nav-a { position:relative; text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+    .nav-a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1.5px; background:#38bdf8; transition:width .25s; }
+    .nav-a:hover::after { width:100%; }
 
-        /* Social Links Layout */
-        .social-links { 
-            display: flex; 
-            gap: 2rem; 
-            align-items: center; 
-            height: 2.5rem; 
-        }
-        
-        .social-link-item {
-            position: relative; /* For tooltip positioning */
-            display: flex;
-            align-items: center;
-        }
+    /* ── Timeline ── */
+    .tl { position:relative; padding-left:2rem; }
+    .tl::before { content:''; position:absolute; left:5px; top:14px; bottom:-2rem; width:2px; background:linear-gradient(to bottom,#38bdf8,rgba(56,189,248,.06)); }
+    .tl:last-child::before { background:linear-gradient(to bottom,#38bdf8 0%,transparent 75%); }
+    .tl-dot { position:absolute; left:0; top:10px; width:12px; height:12px; border-radius:50%; background:#38bdf8; box-shadow:0 0 0 4px rgba(56,189,248,.2); }
 
-        .social-links a {
-            color: var(--text-muted);
-            font-size: 2rem; /* Consistent size for all icons */
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            line-height: 1;
-        }
-        
-        .social-links a:hover { 
-            color: var(--primary); 
-            transform: translateY(-3px); 
-        }
+    /* ── Bento grid ── */
+    .bento { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .bento-2 { grid-column:span 2; }
+    @media(max-width:860px){ .bento { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:560px){ .bento { grid-template-columns:1fr; } .bento-2 { grid-column:span 1; } }
 
-        /* Tooltip Styling */
-        .tooltip {
-            visibility: hidden;
-            background-color: var(--bg-card);
-            color: var(--text-main);
-            text-align: center;
-            padding: 5px 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            font-size: 0.8rem;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; 
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            white-space: nowrap;
-            pointer-events: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
+    /* ── Cert grid ── */
+    .cert-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    @media(max-width:860px){ .cert-grid { grid-template-columns:repeat(2,1fr); } }
 
-        .social-link-item:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+    /* ── Section heading rule ── */
+    .s-title { display:flex; align-items:center; gap:1rem; font-size:1.375rem; font-weight:700; margin-bottom:2rem; }
+    .s-title::after { content:''; flex:1; height:1px; }
 
-        /* Credly SVG Styling */
-        .credly-svg {
-            width: 2rem;  
-            height: 2rem; 
-            display: block;
-        }
+    /* ── Card hover lift ── */
+    .lift { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .lift:hover { transform:translateY(-4px); border-color:rgba(56,189,248,.6) !important; box-shadow:0 12px 32px rgba(56,189,248,.1); }
 
-        /* Sections */
-        section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
-        
-        h2 {
-            font-size: 1.5rem;
-            color: var(--text-main);
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
-        }
+    /* ── Cursor blink ── */
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .cursor { display:inline-block; width:2px; height:.9em; background:#38bdf8; margin-left:1px; vertical-align:text-bottom; animation:blink 1s step-end infinite; }
 
-        /* Experience Cards */
-        .job-card {
-            margin-bottom: 2.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .job-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            bottom: 5px;
-            width: 2px;
-            background: var(--border);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            flex-wrap: nowrap;
-        }
-
-        .job-title-group {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .job-title { font-weight: 600; font-size: 1.2rem; color: var(--text-main); }
-        .company { color: var(--primary); }
-        
-        .date { 
-            font-size: 0.9rem; 
-            color: var(--text-muted) !important; 
-            font-family: monospace;
-            white-space: nowrap; 
-            margin-left: 1rem;   
-            flex-shrink: 0;
-            text-decoration: none !important; 
-            pointer-events: none; 
-        }
-        .date a { color: inherit !important; text-decoration: none !important; }
-
-        ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
-        li { margin-bottom: 0.5rem; color: var(--text-muted); font-size: 1rem; }
-        strong { color: #e2e8f0; font-weight: 600; }
-
-        /* Project Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Standard Card Style (Restored from previous version) */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.2s, border-color 0.2s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .project-title { color: var(--primary); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
-        .project-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-
-        /* Button Alignment Container */
-        .card-actions {
-            margin-top: auto; 
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-link {
-            display: inline-block;
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 6px;
-            background: rgba(255,255,255,0.05);
-            transition: all 0.2s;
-        }
-        .btn-link:hover { background: var(--primary); border-color: var(--primary); color: #0f172a; }
-
-        /* Certifications Grid */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.5rem;
-            justify-items: center; 
-            align-items: start; 
-        }
-        
-        .cert-embed-wrapper {
-            width: 150px; 
-        }
-
-        /* Training Card */
-        .training-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            min-height: 180px;
-        }
-        .training-card:hover { border-color: var(--primary); background: rgba(56, 189, 248, 0.05); }
-        .training-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-muted); }
-        .training-name { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.3; }
-        .training-issuer { font-size: 0.75rem; color: var(--text-muted); }
-
-        /* Training Grid */
-        .training-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Skills Layout */
-        .skill-category { margin-bottom: 2rem; }
-        .skill-category h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 1rem; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        .skill-tag:hover { color: #fff; border-color: var(--text-muted); }
-
-        footer { text-align: center; color: var(--text-muted); padding: 4rem 0; font-size: 0.9rem; }
-    </style>
+    /* ── Skill pill ── */
+    .pill { display:inline-flex; align-items:center; padding:5px 14px; border-radius:999px; font-size:.8125rem; font-weight:500; transition:all .2s; cursor:default; }
+  </style>
 </head>
-<body>
 
-    <header>
-        <div class="container">
-            <h1>Chayan Makwana</h1>
-            <div class="headline">Senior Software Engineer | Full Stack & AI Practitioner</div>
-            <p class="summary">
-                Senior Engineer with <strong>7+ years of experience</strong> delivering complex enterprise systems. 
-                Combining deep architectural expertise in <strong>Java/Spring Boot</strong> with modern <strong>Angular</strong> frontends and Agentic AI integration.
-            </p>
-            
-            <div class="social-links">
-                
-                <div class="social-link-item">
-                    <a href="https://github.com/ChayanMakwana" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <span class="tooltip">GitHub</span>
-                </div>
+<body class="font-sans antialiased bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
 
-                <div class="social-link-item">
-                    <a href="https://linkedin.com/in/chayanmak7" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <span class="tooltip">LinkedIn</span>
-                </div>
-
-                <div class="social-link-item">
-                    <a href="mailto:chayanmak7@gmail.com">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <span class="tooltip">Email</span>
-                </div>
-                
-                <div class="social-link-item">
-                    <a href="https://www.credly.com/users/chayan-makwana/badges#credly" target="_blank">
-                        <svg class="credly-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M15 9.354a4 4 0 1 0 0 5.292"></path>
-                        </svg>
-                    </a>
-                    <span class="tooltip">Credly</span>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-
-        <section>
-            <h2>Professional Experience</h2>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div class="job-title-group">
-                        <span class="job-title">Software Engineer 3</span>
-                        <span style="color: var(--border);">|</span>
-                        <span class="company">QAD Inc.</span>
-                    </div>
-                    <div class="date">05/2023 – Present</div>
-                </div>
-                <ul>
-                    <li>Spearheaded full-stack feature development for cloud-native ERP platforms, integrating <strong>Angular 15</strong> frontend modules with high-performance <strong>Java 17</strong> microservices.</li>
-                    <li>Managed efficient database interactions across <strong>PostgreSQL and Oracle</strong> environments, optimizing queries for transaction integrity.</li>
-                    <li>Collaborated with DevOps to deploy containerized services on AWS EKS using <strong>Terraform and Helm</strong>.</li>
-                    <li>Refactored legacy UI components into modern Angular architecture, ensuring seamless data binding with backend REST endpoints.</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div class="job-title-group">
-                        <span class="job-title">Software Developer</span>
-                        <span style="color: var(--border);">|</span>
-                        <span class="company">Citibank N.A.</span>
-                    </div>
-                    <div class="date">11/2021 – 05/2023</div>
-                </div>
-                <ul>
-                    <li>Engineered end-to-end solutions for the CitiRisk platform, developing secure REST APIs and integrating them with <strong>Angular</strong> dashboards for real-time risk visualization.</li>
-                    <li>Streamlined data processing pipelines with <strong>Kafka and Redis</strong> to serve high-volume endpoints.</li>
-                    <li>Focused heavily on <strong>Oracle DB</strong> performance tuning and secure transaction workflows complying with banking standards.</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div class="job-title-group">
-                        <span class="job-title">Java Developer</span>
-                        <span style="color: var(--border);">|</span>
-                        <span class="company">Tata Consultancy Services</span>
-                    </div>
-                    <div class="date">01/2018 – 11/2021</div>
-                </div>
-                <ul>
-                    <li>Developed scalable financial applications for the NSDL Tax Information Network using Java and Spring.</li>
-                    <li>Delivered SOAP/REST APIs and implemented complex SQL logic for large-scale transaction workflows.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>Certifications & Badges</h2>
-            <div class="cert-grid">
-                
-                <div class="cert-embed-wrapper">
-                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="82603f09-6b39-4267-a464-05332e2b4cb6" data-share-badge-host="https://www.credly.com"></div>
-                </div>
-
-                <div class="cert-embed-wrapper">
-                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5fe96f1c-c46c-48dd-8e49-ee90207eaa99" data-share-badge-host="https://www.credly.com"></div>
-                </div>
-
-                <div class="cert-embed-wrapper">
-                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7c74a373-6303-41c1-8b83-02e0c4657524" data-share-badge-host="https://www.credly.com"></div>
-                </div>
-
-                <div class="cert-embed-wrapper">
-                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="1e437ddf-d04a-4477-ae50-ae628db8ca97" data-share-badge-host="https://www.credly.com"></div>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2>Professional Training</h2>
-            <div class="training-grid">
-                <div class="training-card">
-                    <i class="fas fa-infinity training-icon" style="color: #38bdf8;"></i>
-                    <div class="training-name">DevOps Engineering on AWS</div>
-                    <div class="training-issuer">Digital Classroom</div>
-                </div>
-                <div class="training-card">
-                    <i class="fas fa-cubes training-icon" style="color: #38bdf8;"></i>
-                    <div class="training-name">Running Containers on Amazon EKS</div>
-                    <div class="training-issuer">Digital Classroom</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Featured Projects</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3 class="project-title"><i class="fas fa-chart-pie"></i> ProcureSync AI</h3>
-                    <p class="project-desc">
-                        <strong>Kaggle Capstone:</strong> Optimized procurement processes using Machine Learning to analyze operational data patterns.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/ChayanMakwana/procuresync-ai" class="btn-link" target="_blank">View Code</a>
-                        <a href="https://www.kaggle.com/competitions/agents-intensive-capstone-project/writeups/procuresync-ai-context-aware-enterprise-orchestra" class="btn-link" target="_blank">Read Writeup</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3 class="project-title"><i class="fas fa-robot"></i> Agentic AI Support</h3>
-                    <p class="project-desc">
-                        An autonomous agent system for customer support. Built with Spring Boot and Spring AI to handle complex queries via automated reasoning workflows.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" class="btn-link" target="_blank">View Code</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3 class="project-title"><i class="fas fa-terminal"></i> OpenAI Prompt Service</h3>
-                    <p class="project-desc">
-                        A modular Spring Boot infrastructure service for managing OpenAI prompts. Acts as a centralized gateway for LLM interactions in a microservices architecture.
-                    </p>
-                    <div class="card-actions">
-                        <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" class="btn-link" target="_blank">View Code</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section style="border-bottom: none;">
-            <h2>Technical Stack</h2>
-            
-            <div class="skill-category">
-                <h3>Core Development & Architecture</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Java 17</span>
-                    <span class="skill-tag">Spring Boot 3</span>
-                    <span class="skill-tag">Angular 15</span>
-                    <span class="skill-tag">Microservices</span>
-                    <span class="skill-tag">REST APIs</span>
-                    <span class="skill-tag">Python</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Data Engineering & Streaming</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">PostgreSQL</span>
-                    <span class="skill-tag">Oracle DB / PL/SQL</span>
-                    <span class="skill-tag">Redis</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Kafka</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Cloud Infrastructure & DevOps</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">AWS (EKS, RDS, Lambda)</span>
-                    <span class="skill-tag">Terraform</span>
-                    <span class="skill-tag">Helm</span>
-                    <span class="skill-tag">ArgoCD</span>
-                    <span class="skill-tag">Docker & K8s</span>
-                    <span class="skill-tag">Jenkins</span>
-                    <span class="skill-tag">SonarQube</span>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>AI Engineering & Innovation</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Spring AI</span>
-                    <span class="skill-tag">LangChain</span>
-                    <span class="skill-tag">GenAI Agents</span>
-                    <span class="skill-tag">Vector DBs</span>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2025 Chayan Makwana. Hosted on GitHub Pages.</p>
-        </footer>
+  <!-- ════════════ NAVBAR ════════════ -->
+  <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800/60">
+    <div class="max-w-5xl mx-auto px-5 flex items-center justify-between h-14">
+      <span class="font-extrabold text-sky-400 text-xl tracking-tight">CM<span class="text-slate-400 dark:text-slate-600">.</span></span>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#experience"     class="nav-a text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400">Experience</a>
+        <a href="#certifications" class="nav-a text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400">Certifications</a>
+        <a href="#projects"       class="nav-a text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400">Projects</a>
+        <a href="#skills"         class="nav-a text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400">Skills</a>
+      </div>
+      <button id="theme-toggle" aria-label="Toggle theme"
+        class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-sm">
+        <i id="theme-icon" class="fas fa-moon"></i>
+      </button>
     </div>
-    
-    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+  </nav>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative overflow-hidden pt-32 pb-24 glow-hero">
+    <div class="max-w-5xl mx-auto px-5 relative z-10">
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 dark:bg-sky-400/10 border border-sky-200 dark:border-sky-400/20 text-sky-600 dark:text-sky-400 text-xs font-medium mb-6 reveal">
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse inline-block"></span>
+        Open to Senior / Staff Engineering opportunities
+      </div>
+
+      <h1 id="hero-name" class="text-5xl md:text-7xl font-extrabold mb-3 reveal reveal-d1">
+        Chayan Makwana
+      </h1>
+
+      <p class="text-lg md:text-xl text-sky-500 dark:text-sky-400 font-semibold mb-5 reveal reveal-d2 min-h-[2rem]">
+        <span id="tw-out"></span><span class="cursor"></span>
+      </p>
+
+      <p class="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed mb-10 reveal reveal-d3">
+        Senior Engineer with <strong class="text-slate-800 dark:text-slate-200 font-semibold">7+ years</strong> delivering complex enterprise systems.
+        Deep architectural expertise in <strong class="text-slate-800 dark:text-slate-200 font-semibold">Java / Spring Boot</strong> microservices,
+        <strong class="text-slate-800 dark:text-slate-200 font-semibold">Angular</strong> frontends, and
+        <strong class="text-slate-800 dark:text-slate-200 font-semibold">Agentic AI</strong> integration.
+      </p>
+
+      <!-- CTA Links -->
+      <div class="flex flex-wrap gap-3 reveal">
+        <a href="https://github.com/ChayanMakwana" target="_blank"
+           class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-sky-400 hover:text-white hover:border-sky-400 dark:hover:bg-sky-400 dark:hover:text-slate-900 dark:hover:border-sky-400 font-medium text-sm transition-all">
+          <i class="fab fa-github text-base"></i> GitHub
+        </a>
+        <a href="https://linkedin.com/in/chayanmak7" target="_blank"
+           class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-sky-400 hover:text-white hover:border-sky-400 dark:hover:bg-sky-400 dark:hover:text-slate-900 dark:hover:border-sky-400 font-medium text-sm transition-all">
+          <i class="fab fa-linkedin text-base"></i> LinkedIn
+        </a>
+        <a href="mailto:chayanmak7@gmail.com"
+           class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-sky-400 hover:text-white hover:border-sky-400 dark:hover:bg-sky-400 dark:hover:text-slate-900 dark:hover:border-sky-400 font-medium text-sm transition-all">
+          <i class="fas fa-envelope text-base"></i> Email
+        </a>
+        <a href="https://www.credly.com/users/chayan-makwana/badges" target="_blank"
+           class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-sky-400 hover:text-white hover:border-sky-400 dark:hover:bg-sky-400 dark:hover:text-slate-900 dark:hover:border-sky-400 font-medium text-sm transition-all">
+          <i class="fas fa-certificate text-base"></i> Credly
+        </a>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="flex flex-wrap gap-10 mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 reveal">
+        <div>
+          <div class="text-4xl font-extrabold text-sky-400 tabular-nums">7+</div>
+          <div class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wide">Years Exp.</div>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-sky-400 tabular-nums">8</div>
+          <div class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wide">Certifications</div>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-sky-400 tabular-nums">3</div>
+          <div class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wide">Enterprise Platforms</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ MAIN CONTENT ════════════ -->
+  <div class="max-w-5xl mx-auto px-5 pb-28 space-y-24">
+
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience">
+      <h2 class="s-title text-slate-800 dark:text-slate-100 after:bg-slate-200 dark:after:bg-slate-800">
+        <span class="text-sky-400 font-mono text-sm font-normal">01.</span> Experience
+      </h2>
+
+      <div class="space-y-8">
+        <!-- QAD -->
+        <div class="tl reveal">
+          <div class="tl-dot"></div>
+          <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 lift">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <span class="font-bold text-lg text-slate-900 dark:text-slate-100">Software Engineer 3</span>
+                <span class="text-sky-500 dark:text-sky-400 font-semibold ml-2">@ QAD Inc.</span>
+              </div>
+              <span class="text-xs font-mono bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400 px-2.5 py-1 rounded-full whitespace-nowrap">05/2023 – Present</span>
+            </div>
+            <ul class="space-y-2.5">
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Spearheaded full-stack feature development for cloud-native ERP platforms, integrating <strong class="text-slate-700 dark:text-slate-300">Angular 15</strong> frontend modules with high-performance <strong class="text-slate-700 dark:text-slate-300">Java 17</strong> microservices.
+              </li>
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Managed efficient database interactions across <strong class="text-slate-700 dark:text-slate-300">PostgreSQL and Oracle</strong>, optimizing queries for transaction integrity.
+              </li>
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Collaborated with DevOps to deploy containerized services on AWS EKS using <strong class="text-slate-700 dark:text-slate-300">Terraform and Helm</strong>.
+              </li>
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Refactored legacy UI components into modern Angular architecture, ensuring seamless data binding with backend REST endpoints.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Citibank -->
+        <div class="tl reveal reveal-d1">
+          <div class="tl-dot"></div>
+          <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 lift">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <span class="font-bold text-lg text-slate-900 dark:text-slate-100">Software Developer</span>
+                <span class="text-sky-500 dark:text-sky-400 font-semibold ml-2">@ Citibank N.A.</span>
+              </div>
+              <span class="text-xs font-mono bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400 px-2.5 py-1 rounded-full whitespace-nowrap">11/2021 – 05/2023</span>
+            </div>
+            <ul class="space-y-2.5">
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Engineered end-to-end solutions for the CitiRisk platform, developing secure REST APIs integrated with <strong class="text-slate-700 dark:text-slate-300">Angular</strong> dashboards for real-time risk visualization.
+              </li>
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Streamlined data processing pipelines with <strong class="text-slate-700 dark:text-slate-300">Kafka and Redis</strong> to serve high-volume endpoints.
+              </li>
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Focused on <strong class="text-slate-700 dark:text-slate-300">Oracle DB</strong> performance tuning and secure transaction workflows complying with banking standards.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TCS -->
+        <div class="tl reveal reveal-d2">
+          <div class="tl-dot"></div>
+          <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 lift">
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <span class="font-bold text-lg text-slate-900 dark:text-slate-100">Java Developer</span>
+                <span class="text-sky-500 dark:text-sky-400 font-semibold ml-2">@ Tata Consultancy Services</span>
+              </div>
+              <span class="text-xs font-mono bg-slate-100 dark:bg-slate-700/60 text-slate-500 dark:text-slate-400 px-2.5 py-1 rounded-full whitespace-nowrap">01/2018 – 11/2021</span>
+            </div>
+            <ul class="space-y-2.5">
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Developed scalable financial applications for the NSDL Tax Information Network using Java and Spring.
+              </li>
+              <li class="flex gap-2.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                <i class="fas fa-chevron-right text-sky-400 mt-[3px] flex-shrink-0 text-[10px]"></i>
+                Delivered SOAP/REST APIs and implemented complex SQL logic for large-scale transaction workflows.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CERTIFICATIONS ── -->
+    <section id="certifications">
+      <h2 class="s-title text-slate-800 dark:text-slate-100 after:bg-slate-200 dark:after:bg-slate-800">
+        <span class="text-sky-400 font-mono text-sm font-normal">02.</span> Certifications & Training
+      </h2>
+
+      <!-- AWS / Credly -->
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">AWS &amp; Cloud Credentials</p>
+      <div class="cert-grid mb-10">
+
+        <!-- Badge 1 — credly-badge-1.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal">
+          <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/credly-badge-1.png" alt="AWS Cert Badge 1" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
+          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <a href="https://www.credly.com/badges/82603f09-6b39-4267-a464-05332e2b4cb6" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
+          </a>
+        </div>
+
+        <!-- Badge 2 — credly-badge-2.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d1">
+          <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/credly-badge-2.png" alt="AWS Cert Badge 2" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
+          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <a href="https://www.credly.com/badges/5fe96f1c-c46c-48dd-8e49-ee90207eaa99" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
+          </a>
+        </div>
+
+        <!-- Badge 3 — credly-badge-3.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d2">
+          <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/credly-badge-3.png" alt="AWS Cert Badge 3" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
+          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <a href="https://www.credly.com/badges/7c74a373-6303-41c1-8b83-02e0c4657524" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
+          </a>
+        </div>
+
+        <!-- Badge 4 — credly-badge-4.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d3">
+          <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/credly-badge-4.png" alt="AWS Cert Badge 4" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
+          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <a href="https://www.credly.com/badges/1e437ddf-d04a-4477-ae50-ae628db8ca97" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
+          </a>
+        </div>
+      </div>
+
+      <!-- NEW — AWS AI Practitioner (bento span-2 + 3 Anthropic) -->
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">New &amp; Anthropic Academy</p>
+      <div class="bento mb-6">
+
+        <!-- AWS AI Practitioner — aws-ai-practitioner.png (featured card) -->
+        <div class="bento-2 bg-gradient-to-br from-sky-50 to-blue-50 dark:from-slate-800/70 dark:to-sky-900/20 border border-sky-200 dark:border-sky-500/30 rounded-2xl p-6 flex gap-6 items-center lift reveal">
+          <div class="w-28 h-28 flex-shrink-0 flex items-center justify-center rounded-2xl overflow-hidden bg-white dark:bg-slate-700/40 shadow-sm">
+            <img src="assets/badges/aws-ai-practitioner.png" alt="AWS Certified AI Practitioner" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-robot text-4xl text-sky-400/60\'></i>'">
+          </div>
+          <div class="flex-1">
+            <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-400/15 text-sky-600 dark:text-sky-400 text-[10px] font-semibold uppercase tracking-wide mb-2">
+              <i class="fas fa-star text-[8px]"></i> New
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-slate-100 text-base mb-1">AWS Certified AI Practitioner</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Amazon Web Services · Credly Badge</p>
+            <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+              <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
+            </a>
+          </div>
+        </div>
+
+        <!-- Claude Code in Action — anthropic-claude-code.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d1">
+          <div class="w-20 h-20 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/anthropic-claude-code.png" alt="Claude Code in Action" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-terminal text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-400/15 text-violet-600 dark:text-violet-400 text-[10px] font-semibold uppercase tracking-wide mb-2">
+            Anthropic
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Claude Code in Action</p>
+          <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
+          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
+          </a>
+        </div>
+
+        <!-- Building with Claude API — anthropic-claude-api.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d2">
+          <div class="w-20 h-20 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/anthropic-claude-api.png" alt="Building with Claude API" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-code text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-400/15 text-violet-600 dark:text-violet-400 text-[10px] font-semibold uppercase tracking-wide mb-2">
+            Anthropic
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Building with Claude API</p>
+          <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
+          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
+          </a>
+        </div>
+
+        <!-- Model Context Protocol — anthropic-mcp.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d3">
+          <div class="w-20 h-20 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/anthropic-mcp.png" alt="Model Context Protocol" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-network-wired text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-400/15 text-violet-600 dark:text-violet-400 text-[10px] font-semibold uppercase tracking-wide mb-2">
+            Anthropic
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Model Context Protocol</p>
+          <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
+          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
+          </a>
+        </div>
+      </div>
+
+      <!-- Professional Training (kept from original) -->
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4 mt-10">Professional Training</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 lift reveal">
+          <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-400/10">
+            <i class="fas fa-infinity text-sky-400 text-xl"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm text-slate-800 dark:text-slate-200">DevOps Engineering on AWS</p>
+            <p class="text-xs text-slate-400 mt-0.5">AWS Digital Classroom</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 lift reveal reveal-d1">
+          <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-400/10">
+            <i class="fas fa-cubes text-sky-400 text-xl"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-sm text-slate-800 dark:text-slate-200">Running Containers on Amazon EKS</p>
+            <p class="text-xs text-slate-400 mt-0.5">AWS Digital Classroom</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
+      <h2 class="s-title text-slate-800 dark:text-slate-100 after:bg-slate-200 dark:after:bg-slate-800">
+        <span class="text-sky-400 font-mono text-sm font-normal">03.</span> Featured Projects
+      </h2>
+
+      <div class="bento">
+
+        <!-- ProcureSync AI — featured (spans 2) -->
+        <div class="bento-2 bg-gradient-to-br from-slate-50 to-sky-50/40 dark:from-slate-800/60 dark:to-sky-900/10 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-7 flex flex-col lift reveal">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-400/10">
+              <i class="fas fa-chart-pie text-sky-400 text-xl"></i>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-sky-100 dark:bg-sky-400/10 text-sky-600 dark:text-sky-400">Featured</span>
+          </div>
+          <h3 class="font-bold text-xl text-slate-900 dark:text-slate-100 mb-2">ProcureSync AI</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5 flex-1">
+            <strong class="text-slate-700 dark:text-slate-300">Kaggle Capstone:</strong> Context-aware enterprise orchestration system optimizing procurement processes using Machine Learning to analyze operational data patterns and automate decision workflows.
+          </p>
+          <div class="flex flex-wrap gap-2.5 mt-auto">
+            <a href="https://github.com/ChayanMakwana/procuresync-ai" target="_blank"
+               class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs font-semibold hover:bg-sky-500 dark:hover:bg-sky-500 transition-all">
+              <i class="fab fa-github text-sm"></i> View Code
+            </a>
+            <a href="https://www.kaggle.com/competitions/agents-intensive-capstone-project/writeups/procuresync-ai-context-aware-enterprise-orchestra" target="_blank"
+               class="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-sky-400 hover:border-sky-400 hover:text-white dark:hover:bg-sky-400 dark:hover:border-sky-400 dark:hover:text-slate-900 transition-all">
+              <i class="fas fa-book-open text-sm"></i> Read Writeup
+            </a>
+          </div>
+        </div>
+
+        <!-- Agentic AI Support -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 flex flex-col lift reveal reveal-d1">
+          <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-400/10 mb-3">
+            <i class="fas fa-robot text-sky-400 text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2">Agentic AI Support</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5 flex-1">
+            Autonomous agent system for customer support built with <strong class="text-slate-700 dark:text-slate-300">Spring Boot & Spring AI</strong>, handling complex queries via automated reasoning workflows.
+          </p>
+          <a href="https://github.com/ChayanMakwana/springboot-agentic-ai-customer-support" target="_blank"
+             class="flex items-center gap-1.5 px-4 py-2 w-fit rounded-lg border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-sky-400 hover:border-sky-400 hover:text-white dark:hover:bg-sky-400 dark:hover:border-sky-400 dark:hover:text-slate-900 transition-all mt-auto">
+            <i class="fab fa-github text-sm"></i> View Code
+          </a>
+        </div>
+
+        <!-- OpenAI Prompt Service -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 flex flex-col lift reveal reveal-d2">
+          <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-400/10 mb-3">
+            <i class="fas fa-terminal text-sky-400 text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2">OpenAI Prompt Service</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-5 flex-1">
+            Modular <strong class="text-slate-700 dark:text-slate-300">Spring Boot</strong> infrastructure service acting as a centralized gateway for LLM interactions in a microservices architecture.
+          </p>
+          <a href="https://github.com/ChayanMakwana/springboot-openai-prompt-service" target="_blank"
+             class="flex items-center gap-1.5 px-4 py-2 w-fit rounded-lg border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-sky-400 hover:border-sky-400 hover:text-white dark:hover:bg-sky-400 dark:hover:border-sky-400 dark:hover:text-slate-900 transition-all mt-auto">
+            <i class="fab fa-github text-sm"></i> View Code
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills">
+      <h2 class="s-title text-slate-800 dark:text-slate-100 after:bg-slate-200 dark:after:bg-slate-800">
+        <span class="text-sky-400 font-mono text-sm font-normal">04.</span> Technical Stack
+      </h2>
+
+      <div class="space-y-7">
+
+        <!-- Core -->
+        <div class="reveal">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-3">Core Development &amp; Architecture</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Java 17</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Spring Boot 3</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Angular 15</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Microservices</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">REST APIs</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Python</span>
+          </div>
+        </div>
+
+        <!-- Data -->
+        <div class="reveal reveal-d1">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-3">Data Engineering &amp; Streaming</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">PostgreSQL</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Oracle DB / PL-SQL</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Redis</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">MongoDB</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Kafka</span>
+          </div>
+        </div>
+
+        <!-- Cloud -->
+        <div class="reveal reveal-d2">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-3">Cloud Infrastructure &amp; DevOps</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">AWS (EKS · RDS · Lambda)</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Terraform</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Helm</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">ArgoCD</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Docker &amp; Kubernetes</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Jenkins</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">SonarQube</span>
+          </div>
+        </div>
+
+        <!-- AI Engineering — updated with new skills -->
+        <div class="reveal reveal-d3">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-sky-500 dark:text-sky-400 mb-3">AI Engineering &amp; Innovation</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill bg-violet-50 dark:bg-violet-500/10 border border-violet-200 dark:border-violet-500/30 text-violet-600 dark:text-violet-400 hover:border-violet-400 hover:bg-violet-100 dark:hover:border-violet-400">Anthropic Claude API</span>
+            <span class="pill bg-violet-50 dark:bg-violet-500/10 border border-violet-200 dark:border-violet-500/30 text-violet-600 dark:text-violet-400 hover:border-violet-400 hover:bg-violet-100 dark:hover:border-violet-400">Claude Code</span>
+            <span class="pill bg-violet-50 dark:bg-violet-500/10 border border-violet-200 dark:border-violet-500/30 text-violet-600 dark:text-violet-400 hover:border-violet-400 hover:bg-violet-100 dark:hover:border-violet-400">Model Context Protocol (MCP)</span>
+            <span class="pill bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/30 text-sky-700 dark:text-sky-400 hover:border-sky-400">AWS AI Services</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Spring AI</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">LangChain</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">GenAI Agents</span>
+            <span class="pill bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 dark:hover:border-sky-400">Vector DBs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /main content -->
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-10">
+    <div class="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-400">
+      <span>© 2025 Chayan Makwana. Hosted on GitHub Pages.</span>
+      <div class="flex items-center gap-5">
+        <a href="https://github.com/ChayanMakwana" target="_blank" class="hover:text-sky-400 transition-colors"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/chayanmak7" target="_blank" class="hover:text-sky-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:chayanmak7@gmail.com" class="hover:text-sky-400 transition-colors"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Dark/Light Mode ── */
+    const html = document.documentElement;
+    const btn  = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    function setDark(on) {
+      html.classList.toggle('dark', on);
+      icon.className = on ? 'fas fa-sun' : 'fas fa-moon';
+      localStorage.setItem('theme', on ? 'dark' : 'light');
+    }
+
+    // Init: respect saved preference, fall back to system
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      setDark(saved === 'dark');
+    } else {
+      setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+
+    // Keep in sync if user changes OS preference (and no manual override)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) setDark(e.matches);
+    });
+
+    btn.addEventListener('click', () => setDark(!html.classList.contains('dark')));
+
+    /* ── Gradient name (switches with theme) ── */
+    const heroName = document.getElementById('hero-name');
+    function updateGrad() {
+      heroName.className = html.classList.contains('dark')
+        ? 'text-5xl md:text-7xl font-extrabold mb-3 reveal reveal-d1 grad-dark'
+        : 'text-5xl md:text-7xl font-extrabold mb-3 reveal reveal-d1 grad-light';
+    }
+    btn.addEventListener('click', () => { setTimeout(updateGrad, 0); });
+    updateGrad();
+
+    /* ── Scroll Reveal ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+      // Immediately reveal elements already in viewport on load
+    });
+
+    /* ── Typewriter Effect ── */
+    const tw   = document.getElementById('tw-out');
+    const roles = ['Senior Software Engineer', 'Full Stack Developer', 'AI Practitioner', 'Cloud Architect'];
+    let ri = 0, ci = 0, deleting = false;
+
+    function type() {
+      const word = roles[ri];
+      if (!deleting) {
+        tw.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        tw.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+      }
+      setTimeout(type, deleting ? 45 : 80);
+    }
+    type();
+  </script>
 
 </body>
 </html>
