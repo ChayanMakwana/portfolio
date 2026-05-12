@@ -60,9 +60,9 @@
     @media(max-width:860px){ .bento { grid-template-columns:repeat(2,1fr); } }
     @media(max-width:560px){ .bento { grid-template-columns:1fr; } .bento-2 { grid-column:span 1; } }
 
-    /* ── Cert grid ── */
-    .cert-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
-    @media(max-width:860px){ .cert-grid { grid-template-columns:repeat(2,1fr); } }
+    /* ── Cert grid (auto-fill so more badges can be added freely) ── */
+    .cert-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(148px, 1fr)); gap:1rem; }
+    @media(max-width:480px){ .cert-grid { grid-template-columns:repeat(2,1fr); } }
 
     /* ── Section heading rule ── */
     .s-title { display:flex; align-items:center; gap:1rem; font-size:1.375rem; font-weight:700; margin-bottom:2rem; }
@@ -151,7 +151,7 @@
           <div class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wide">Years Exp.</div>
         </div>
         <div>
-          <div class="text-4xl font-extrabold text-sky-400 tabular-nums">8</div>
+          <div class="text-4xl font-extrabold text-sky-400 tabular-nums">9+</div>
           <div class="text-xs text-slate-400 font-medium mt-1 uppercase tracking-wide">Certifications</div>
         </div>
         <div>
@@ -266,61 +266,74 @@
       </h2>
 
       <!-- AWS / Credly -->
-      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">AWS &amp; Cloud Credentials</p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">Industry Credentials &amp; Badges</p>
       <div class="cert-grid mb-10">
 
-        <!-- Badge 1 — credly-badge-1.png -->
+        <!-- Badge 1 — credly-badge-1.png: AWS Certified Developer – Associate -->
         <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal">
           <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
-            <img src="assets/badges/credly-badge-1.png" alt="AWS Cert Badge 1" class="w-full h-full object-contain"
+            <img src="assets/badges/credly-badge-1.png" alt="AWS Certified Developer – Associate" class="w-full h-full object-contain"
                  onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
           </div>
-          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
-          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certified Developer</p>
+          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Associate</p>
           <a href="https://www.credly.com/badges/82603f09-6b39-4267-a464-05332e2b4cb6" target="_blank"
              class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
           </a>
         </div>
 
-        <!-- Badge 2 — credly-badge-2.png -->
+        <!-- Badge 2 — credly-badge-2.png: AWS Certified Cloud Practitioner -->
         <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d1">
           <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
-            <img src="assets/badges/credly-badge-2.png" alt="AWS Cert Badge 2" class="w-full h-full object-contain"
+            <img src="assets/badges/credly-badge-2.png" alt="AWS Certified Cloud Practitioner" class="w-full h-full object-contain"
                  onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
           </div>
-          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
-          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Cloud Practitioner</p>
+          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Foundational</p>
           <a href="https://www.credly.com/badges/5fe96f1c-c46c-48dd-8e49-ee90207eaa99" target="_blank"
              class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
           </a>
         </div>
 
-        <!-- Badge 3 — credly-badge-3.png -->
+        <!-- Badge 3 — credly-badge-3.png: Oracle Certified Professional -->
         <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d2">
           <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
-            <img src="assets/badges/credly-badge-3.png" alt="AWS Cert Badge 3" class="w-full h-full object-contain"
+            <img src="assets/badges/credly-badge-3.png" alt="Oracle Certified Professional" class="w-full h-full object-contain"
                  onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
           </div>
-          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
-          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Oracle Certified Professional</p>
+          <p class="text-xs text-slate-400 mb-3">Oracle · Credly</p>
           <a href="https://www.credly.com/badges/7c74a373-6303-41c1-8b83-02e0c4657524" target="_blank"
              class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
           </a>
         </div>
 
-        <!-- Badge 4 — credly-badge-4.png -->
+        <!-- Badge 4 — credly-badge-4.png: AWS Educate Intro to Generative AI -->
         <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal reveal-d3">
           <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
-            <img src="assets/badges/credly-badge-4.png" alt="AWS Cert Badge 4" class="w-full h-full object-contain"
+            <img src="assets/badges/credly-badge-4.png" alt="AWS Educate: Introduction to Generative AI" class="w-full h-full object-contain"
                  onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
           </div>
-          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">AWS Certification</p>
-          <p class="text-xs text-slate-400 mb-3">Amazon Web Services · Credly</p>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Intro to Generative AI</p>
+          <p class="text-xs text-slate-400 mb-3">AWS Educate · Trained</p>
           <a href="https://www.credly.com/badges/1e437ddf-d04a-4477-ae50-ae628db8ca97" target="_blank"
              class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
+          </a>
+        </div>
+
+        <!-- Badge 5 — azure-fundamentals.png: Microsoft Certified: Azure Fundamentals -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal">
+          <div class="w-24 h-24 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/azure-fundamentals.png" alt="Microsoft Certified: Azure Fundamentals" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-award text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Azure Fundamentals</p>
+          <p class="text-xs text-slate-400 mb-3">Microsoft Certified · AZ-900</p>
+          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Badge
           </a>
         </div>
@@ -359,7 +372,8 @@
           </div>
           <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Claude Code in Action</p>
           <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
-          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+          <a href="https://anthropic.skilljar.com/c/z397rhtxqdwd/add-to-linkedin" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
           </a>
         </div>
@@ -375,7 +389,8 @@
           </div>
           <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Building with Claude API</p>
           <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
-          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+          <a href="https://anthropic.skilljar.com/c/xaskazg8f8z5/add-to-linkedin" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
           </a>
         </div>
@@ -391,7 +406,25 @@
           </div>
           <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Model Context Protocol</p>
           <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
-          <a href="#" class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+          <a href="https://anthropic.skilljar.com/c/x6rsscg4e6zy/add-to-linkedin" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
+          </a>
+        </div>
+
+        <!-- 4th Anthropic course — anthropic-course-4.png -->
+        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-5 flex flex-col items-center text-center lift reveal">
+          <div class="w-20 h-20 mb-3 flex items-center justify-center rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40">
+            <img src="assets/badges/anthropic-course-4.png" alt="Anthropic Academy Course" class="w-full h-full object-contain"
+                 onerror="this.outerHTML='<i class=\'fas fa-brain text-3xl text-sky-400/40\'></i>'">
+          </div>
+          <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-400/15 text-violet-600 dark:text-violet-400 text-[10px] font-semibold uppercase tracking-wide mb-2">
+            Anthropic
+          </div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-snug mb-1">Anthropic Academy</p>
+          <p class="text-xs text-slate-400 mb-3">Anthropic Academy</p>
+          <a href="https://anthropic.skilljar.com/c/6gey92y6nyzz/add-to-linkedin" target="_blank"
+             class="text-xs text-sky-500 dark:text-sky-400 hover:underline flex items-center gap-1">
             <i class="fas fa-external-link-alt text-[10px]"></i> View Certificate
           </a>
         </div>
